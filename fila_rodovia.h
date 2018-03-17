@@ -13,7 +13,7 @@ typedef DESCRITOR * FILA_ENC;
 void cria_rodovia (FILA_ENC *);
 int eh_vazia1 (FILA_ENC);
 void enfileira (FILA_ENC, char);
-void consulta_rodovia(FILA_ENC , char );
+void consulta_rodovia(FILA_ENC , char *);
 
 
 void cria_rodovia (FILA_ENC *pf){
@@ -62,6 +62,7 @@ void consulta_rodovia(FILA_ENC f, char string[]){
 		}
 	f->INICIO = recup;
 }
+
 void imprime_rodovias(FILA_ENC f){
 	NODO * recup = (NODO*) malloc (sizeof(NODO));
 	if (!recup){

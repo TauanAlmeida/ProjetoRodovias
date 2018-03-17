@@ -7,12 +7,13 @@
 #include "fila_rodovia.h"
 #include "lista_cidade.h"
 
+
 FILA_ENC  r; 
 void cadastrar_rodovia();
 void insereCidade(char nomeRodovia[], char nomeCidade[]);
 void imprime_all();
 LISTA_ENC rodoviasCidade(char nomeCidade[]);
-bool Cruzamento(char nomeRodovia[],  char nomeRodovia2[]);
+int Cruzamento(char *,  char *);
 
 int main (){
 	cria_rodovia(&r);
@@ -115,7 +116,7 @@ LISTA_ENC rodoviasCidade(char nomeCidade[]){
 	LISTA_ENC t;
 	cria_lista(&t);
 	int achou = 0;
-	no * backup_lista = (no*) malloc (sizeof(NO));
+	NO * backup_lista = (NO*) malloc (sizeof(NO));
 	NODO *  backup_fila = (NODO*) malloc (sizeof(NODO));
 	if (!backup_lista || !backup_fila){
 		printf ("Falha ao alocar memoria!\n");
@@ -171,7 +172,7 @@ void insereCidade(char nomeRodovia[], char nomeCidade[]){
 }
 
 void imprime_all(){
-	no * backup_lista = (no*) malloc (sizeof(NO));
+	NO * backup_lista = (NO*) malloc (sizeof(NO));
 	NODO *  backup_fila = (NODO*) malloc (sizeof(NODO));
 	if (!backup_lista || !backup_fila){
 		printf ("Falha ao alocar memoria!\n");
@@ -187,26 +188,26 @@ void imprime_all(){
 	free(backup_fila);
 }
 
-bool Cruzamento(char nomeRodovia[], char nomeRodovia2[]){
+int Cruzamento(char nomeRodovia[], char nomeRodovia2[]){
 	NODO * backup_lista = (NODO*) malloc (sizeof(NODO));
 	NODO * backup_lista2 = (NODO*) malloc (sizeof(NODO));
 	NODO * backup_fila = (NODO*) malloc (sizeof(NODO));
-	no * backup_city = (no*) malloc (sizeof(no));
-	no * backup_city2 = (no*) malloc (sizeof(no));
+	NO * backup_city = (NO*) malloc (sizeof(NO));
+	NO * backup_city2 = (NO*) malloc (sizeof(NO));
 	NODO * ProcuraRodovia = NULL;
 	NODO * ProcuraRodovia2 = NULL;
 	if (!backup_city || !backup_city2){
 		printf ("Falha ao alocar memoria!\n");
-		return false;
+		return 0;
 	}	
 	if (!backup_lista || !backup_fila || !backup_lista2){
 		printf ("Falha ao alocar memoria!\n");
-		return false;
+		return 0;
 	}	
 	if (eh_vazia1(r)){
 		printf ("Cadastre pelo menos uma rodovia antes de vim aqui!\n");
 		pause();
-		return false;
+		return 0;
 	}
 	for (backup_fila = r->INICIO; backup_fila;backup_fila = backup_fila->prox){
 	//pega o indice das rodovias cuja as mesma forem econtradas.
@@ -219,7 +220,7 @@ bool Cruzamento(char nomeRodovia[], char nomeRodovia2[]){
 	}
 	if (!ProcuraRodovia || !ProcuraRodovia2){
 		printf ("Rodovias Nao cadastrada!\n");
-		return false;
+		return 0;
 	}
 	//salva os nós iniciais da lista com as cidades.
 	backup_city = ProcuraRodovia->cidade;
@@ -230,12 +231,16 @@ bool Cruzamento(char nomeRodovia[], char nomeRodovia2[]){
 			if (strcmp(backup_lista->cidade->Nome_Cidade, backup_lista2->cidade->Nome_Cidade) == 0){
 				printf ("\nAs Rodovias: %s e %s se cruzam na cidade %s.\n",
 				backup_lista->rodovia, backup_lista2->rodovia, backup_lista->cidade->Nome_Cidade);
-				return true;
+				//se entrar salva os indices das listas das cidades.
+				ProcuraRodovia->cidade = backup_city;
+				ProcuraRodovia2->cidade = backup_city2;
+				return 1;
 			}
 		}
 	}
+	//se não entrar salva os indices das listas das cidades.
 	ProcuraRodovia->cidade = backup_city;
 	ProcuraRodovia2->cidade = backup_city2;
 	printf ("Nenhuma cidade foi localizada!\n");
-	return false;
+	return 0;
 }

@@ -11,7 +11,7 @@ static int count = 0;
 void imprime_lista(LISTA_ENC );
 int eh_vazia (LISTA_ENC );
 int tam (LISTA_ENC );
-void insere_lista(char );
+void insere_lista(char *);
 void cria_lista(LISTA_ENC *);
 
 void insere_lista(char string[]){
