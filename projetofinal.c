@@ -94,8 +94,8 @@ int main (){
 		case 'e':
 			limpar_tela();
 			printf ("\nEste programa foi feito para disciplina de estrutura dados em algoritmos\norientado pelo professor Felipe Pinheiros do Instituto Federal do Sertao\nPernambucano.\n\
-			\nCriando em: 16/06/2018\nDesenvolvido por Tauan Almeida.\
-			\nCodigo disponivel em: https:\\\\github.com\\TauanAlmeida\n\n");
+			\nCriando em: 16/03/2018\nDesenvolvido por Tauan Almeida.\
+			\nCodigo disponivel em: https:\\\\github.com\\TauanAlmeida\\ProjetoRodovias\n\n");
 			pause();
 			limpar_tela();
 		break;
