@@ -1,12 +1,13 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <conio.h>
 #define MAX 5
 #include "diretivas.h"
 #include "fila_rodovia.h"
 #include "lista_cidade.h"
 
+//para a funcao getch funcionar no linux!
+//tem que compilar usando -lncurses, ex:  gcc programa.c -lncurses -o programa
 
 FILA_ENC  r; 
 void cadastrar_rodovia();
@@ -40,7 +41,7 @@ int main (){
       printf("   %c-----------------------------------%c",200,188);
       printf("\n");
     
-   	  fflush(stdin);
+   	  limparBuffer();
       opcao= getch(); 
 		switch (opcao){
 	
@@ -60,7 +61,7 @@ int main (){
 		printf ("Qual cidade voce deseja buscar?");
 		scanf ("%s", &nome_cidade);
 		imprime_lista(rodoviasCidade(nome_cidade));
-	 	fflush(stdin);
+	 	limparBuffer();
 		pause();
 		limpar_tela();
 		break;
@@ -77,7 +78,7 @@ int main (){
 		printf ("Digite o nome da segunda rodovia: ");
 		scanf ("%s", &nomeRod2);
 		Cruzamento(nomeRod,  nomeRod2);
-		fflush(stdin);
+		limparBuffer();
 		pause();
 		limpar_tela();
 		break;
