@@ -42,7 +42,8 @@ int main (){
       printf("\n");
     
    	  limparBuffer();
-      opcao= getch(); 
+      opcao=getch();
+      
 		switch (opcao){
 	
 		case 'A':
@@ -59,7 +60,7 @@ int main (){
 	     limpar_tela();
 		char nome_cidade[20];
 		printf ("Qual cidade voce deseja buscar?");
-		scanf ("%s", &nome_cidade);
+		scanf ("%s", nome_cidade);
 		imprime_lista(rodoviasCidade(nome_cidade));
 	 	limparBuffer();
 		pause();
@@ -73,10 +74,10 @@ int main (){
 		printf ("Para ver os cruzamento entre rodovias basta dizer o nome de duas rodovias cadastradas.\n");
 		imprime_rodovias(r);
 		printf ("\nDigite o nome da primeira rodovia: ");
-		scanf ("%s", &nomeRod);
+		scanf ("%s", nomeRod);
 		printf ("\n");
 		printf ("Digite o nome da segunda rodovia: ");
-		scanf ("%s", &nomeRod2);
+		scanf ("%s", nomeRod2);
 		Cruzamento(nomeRod,  nomeRod2);
 		limparBuffer();
 		pause();
@@ -96,7 +97,7 @@ int main (){
 			limpar_tela();
 			printf ("\nEste programa foi feito para disciplina de estrutura dados em algoritmos\norientado pelo professor Felipe Pinheiros do Instituto Federal do Sertao\nPernambucano.\n\
 			\nCriando em: 16/03/2018\nDesenvolvido por Tauan Almeida.\
-			\nCodigo disponivel em: https:\\\\github.com\\TauanAlmeida\\ProjetoRodovias\n\n");
+			\nProjeto disponivel em: https:\\\\github.com\\TauanAlmeida\\ProjetoRodovias\n\n");
 			pause();
 			limpar_tela();
 		break;
@@ -151,13 +152,13 @@ LISTA_ENC rodoviasCidade(char nomeCidade[]){
 void cadastrar_rodovia(){
 	char NomeRodovia[20], nomeCidade[20];
 	printf ("Cadastre uma rodovia: ");
-	scanf ("%s", &NomeRodovia);
+	scanf ("%s", NomeRodovia);
 	insereRodovia(r, NomeRodovia);
 	printf ("Rodovia Inserida!\n");	
 	printf ("Agora cadastre a cidade para a rodovia %s!\n\n", NomeRodovia);
 	do{
 		printf ("Digite o nome da cidade ou ('s') para sair: ");
-		scanf ("%s", &nomeCidade);
+		scanf ("%s", nomeCidade);
 		if (strcmp(nomeCidade, "s") == 0 || strcmp(nomeCidade, "S") == 0)break;
 			insereCidade(NomeRodovia,  nomeCidade);
 			printf ("Cidade Cadatrada!\n\n");

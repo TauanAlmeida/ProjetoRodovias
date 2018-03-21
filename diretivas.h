@@ -1,9 +1,6 @@
 //Diretivas para saber qual SO é usado pelo usuario.
 #if defined(_WIN32) || defined(WIN32) //se o SO for windows define uma macro OS_WINDOWS.
-   #define OS_Windows
-  // #include<conio.h>
-#else
-	#include<curses.h>   
+   #define OS_Windows 
 #endif
 
 void limpar_tela(){
