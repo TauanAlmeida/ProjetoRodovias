@@ -6,8 +6,6 @@
 #include "fila_rodovia.h"
 #include "lista_cidade.h"
 
-//para a funcao getch funcionar no linux!
-//tem que compilar usando -lncurses, ex:  gcc programa.c -lncurses -o programa
 
 FILA_ENC  r; 
 void cadastrar_rodovia();
